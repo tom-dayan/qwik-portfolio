@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal, $ } from "@builder.io/qwik";
 import {
   QwikCityProvider,
   RouterOutlet,
@@ -6,8 +6,11 @@ import {
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import { isDev } from "@builder.io/qwik/build";
-
+import Navigation from "./components/Navigation";
+import { Main } from "./components/Main";
+import { Contact } from "./components/Contact";
 import "./global.css";
+import { Footer } from "./components/Footer";
 
 export default component$(() => {
   /**
@@ -16,6 +19,7 @@ export default component$(() => {
    *
    * Don't remove the `<head>` and `<body>` elements.
    */
+  const mode = useSignal<string>('dark')
 
   return (
     <QwikCityProvider>
@@ -30,7 +34,13 @@ export default component$(() => {
         <RouterHead />
       </head>
       <body lang="en">
-        <RouterOutlet />
+        <div class={`main-container ${mode.value === 'dark' ? 'dark-mode' : 'light-mode'}`}>
+          <Navigation mode={ mode.value } onModeChange$={$(() => (mode.value = mode.value == 'dark' ? 'light' : 'dark'))} />
+          <Main/>
+          <Contact />
+          <Footer/>
+        </div>
+        {/* <RouterOutlet /> */}
         {!isDev && <ServiceWorkerRegister />}
       </body>
     </QwikCityProvider>
