@@ -1,9 +1,10 @@
 /** @jsxImportSource react */
 import { qwikify$ } from '@builder.io/qwik-react';
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
-import Box from '@mui/material/Box';
+import {Box, CssBaseline, AppBar, Toolbar} from '@mui/material';
+import '../../global.css'
+// import CssBaseline from '@mui/material/CssBaseline';
+// import Toolbar from '@mui/material/Toolbar';
+// import Box from '@mui/material/Box';
 
 interface AppBarProps {
     scrolled: boolean;
@@ -12,7 +13,7 @@ interface AppBarProps {
 export const QAppBar = qwikify$<AppBarProps>(({scrolled, children}) => {
     return(
         <Box sx={{ display: 'flex' }}>
-            {/* <CssBaseline /> */}
+            <CssBaseline />
             <AppBar
                 component="nav"
                 id="navigation"

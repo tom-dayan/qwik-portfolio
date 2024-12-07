@@ -1,4 +1,4 @@
-import { component$, useSignal, $, useTask$, useOnWindow, useVisibleTask$ } from '@builder.io/qwik';
+import { component$, useSignal, $, useTask$, useOnWindow, useVisibleTask$, Signal, QRL } from '@builder.io/qwik';
 import "../global.css";
 import { Button } from './ui/Button';
 import { LuMenu, LuMoon, LuSunMoon } from '@qwikest/icons/lucide';
@@ -14,13 +14,13 @@ const navItems: [string, string][] = [
 
 interface NavigationProps {
   mode: string;
-  onModeChange$: () => void;
+  onModeChange$: QRL<() => void>;
 }
 // : React.FC<NavigationProps> = ({ mode, onModeChange }) => {
 export default component$<NavigationProps>(({ mode, onModeChange$ }) => {
 
   const mobileOpen = useSignal<boolean>(false);
-  const scrolled = useSignal<boolean>(false);
+  const scrolled: Signal<boolean> = useSignal<boolean>(false);
 
 
   const handleDrawerToggle = $(() => {
@@ -36,19 +36,30 @@ export default component$<NavigationProps>(({ mode, onModeChange$ }) => {
     //       position.y = y;
     //     })
     //   );
-    useVisibleTask$(() => {
 
-        const handleScroll = () => {
+    useOnWindow(
+      'scroll',
+      $((event) => {
         const navbar = document.getElementById('navigation');
         if (navbar) {
-            scrolled.value = window.scrollY > navbar.clientHeight;
+          scrolled.value = scrollY > navbar.clientHeight;
         }
-        };
+      })
+    )
 
-        window.addEventListener('scroll', handleScroll);
+    // useVisibleTask$(() => {
 
-        // cleanup(() => window.removeEventListener('scroll', handleScroll));
-    })
+    //     const handleScroll = () => {
+    //     const navbar = document.getElementById('navigation');
+    //     if (navbar) {
+    //         scrolled.value = window.scrollY > navbar.clientHeight;
+    //     }
+    //     };
+
+    //     window.addEventListener('scroll', handleScroll);
+
+    //     // cleanup(() => window.removeEventListener('scroll', handleScroll));
+    // })
 
 
   const scrollToSection$ = $((section: string) => {
@@ -61,14 +72,7 @@ export default component$<NavigationProps>(({ mode, onModeChange$ }) => {
   });
 
   return (
-    // <div style={{ display: 'flex' }}>
-    //   {/* <CssBaseline /> */}
-    //   <nav
-    //     id="navigation"
-    //     class={`navbar-fixed-top${scrolled ? ' scrolled' : ''}`}
-    //   >
-    //     <div class="navigation-bar">
-    <QAppBar client:visible scrolled={scrolled.value}>
+    <QAppBar scrolled={scrolled.value}>
         {/* Theme Toggle Icon */}
         {mode === 'dark' ? (
         <LuSunMoon onClick$={onModeChange$} />
@@ -80,17 +84,16 @@ export default component$<NavigationProps>(({ mode, onModeChange$ }) => {
         <div>
         {navItems.map(([label, id]) => (
             <Button
-            key={id}
-            onClick$={$(() => scrollToSection$(id))}
-            style={{ color: '#fff' }}
+              look={'ghost'}
+              key={id}
+              onClick$={$(() => scrollToSection$(id))}
+              // style={{ color: '#fff' }}
+              class={`${mode == 'light' ? 'light-mode' : 'navigation-bar'}`}
             >
             {label}
             </Button>
         ))}
         </div>
     </QAppBar>
-    //     </div>
-    //   </nav>
-    // </div>
   );
 });
