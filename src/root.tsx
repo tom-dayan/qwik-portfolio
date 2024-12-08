@@ -11,6 +11,7 @@ import { Main } from "./components/Main";
 import { Contact } from "./components/Contact";
 import "./global.css";
 import { Footer } from "./components/Footer";
+import { Expertise } from "./components/Expertise";
 
 export default component$(() => {
   /**
@@ -37,6 +38,7 @@ export default component$(() => {
         <div class={`main-container ${mode.value === 'dark' ? 'dark-mode' : 'light-mode'}`}>
           <Navigation mode={ mode.value } onModeChange$={$(() => (mode.value = mode.value == 'dark' ? 'light' : 'dark'))} />
           <Main/>
+          <Expertise/>
           <Contact />
           <Footer/>
         </div>

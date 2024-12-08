@@ -3,9 +3,9 @@ import { LuGithub } from "@qwikest/icons/lucide";
 import { LuLinkedin } from "@qwikest/icons/lucide";
 
 interface SocialLinksProps {
-        githubUrl: string;
-        linkedinUrl: string;
-        customClass?: string;
+  githubUrl: string;
+  linkedinUrl: string;
+  customClass?: string;
 }
 
 export const SocialLinks = component$<SocialLinksProps>(({ githubUrl, linkedinUrl, customClass }) => {
