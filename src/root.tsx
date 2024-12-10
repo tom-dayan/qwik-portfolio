@@ -12,6 +12,9 @@ import { Contact } from "./components/Contact";
 import "./global.css";
 import { Footer } from "./components/Footer";
 import { Expertise } from "./components/Expertise";
+import { Timeline } from "./integrations/react/Timeline";
+import { LuBriefcase } from '@qwikest/icons/lucide';
+
 
 export default component$(() => {
   /**
@@ -39,6 +42,7 @@ export default component$(() => {
           <Navigation mode={ mode.value } onModeChange$={$(() => (mode.value = mode.value == 'dark' ? 'light' : 'dark'))} />
           <Main/>
           <Expertise/>
+          <Timeline icon={<LuBriefcase/>}/>
           <Contact />
           <Footer/>
         </div>
