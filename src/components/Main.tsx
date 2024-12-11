@@ -11,7 +11,7 @@ export const Main = component$(() => {
         {/* Avatar Section */}
         <div class="image-wrapper">
         <Avatar.Root>
-            <Avatar.Image src={avatarImage} />
+            <Avatar.Image src={avatarImage} width="150" height="150"/>
             {/* <Avatar.Fallback>TD</Avatar.Fallback> */}
         </Avatar.Root>
         </div>

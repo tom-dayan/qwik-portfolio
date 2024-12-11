@@ -13,6 +13,7 @@ import "./global.css";
 import { Footer } from "./components/Footer";
 import { Expertise } from "./components/Expertise";
 import { Timeline } from "./integrations/react/Timeline";
+import { ProjectComponent } from "./components/Project";
 import { LuBriefcase } from '@qwikest/icons/lucide';
 
 
@@ -43,6 +44,7 @@ export default component$(() => {
           <Main/>
           <Expertise/>
           <Timeline/>
+          <ProjectComponent/>
           <Contact />
           <Footer/>
         </div>
