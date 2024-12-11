@@ -42,7 +42,7 @@ export default component$(() => {
           <Navigation mode={ mode.value } onModeChange$={$(() => (mode.value = mode.value == 'dark' ? 'light' : 'dark'))} />
           <Main/>
           <Expertise/>
-          <Timeline icon={<LuBriefcase/>}/>
+          <Timeline/>
           <Contact />
           <Footer/>
         </div>
