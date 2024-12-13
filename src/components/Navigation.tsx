@@ -11,7 +11,7 @@ const navItems: [string, string][] = [
   ['Projects', 'projects'],
   ['Contact', 'contact'],
 ];
-
+//
 interface NavigationProps {
   mode: string;
   onModeChange$: QRL<() => void>;
