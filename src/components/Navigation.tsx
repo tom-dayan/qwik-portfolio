@@ -1,7 +1,7 @@
-import { component$, useSignal, $, useTask$, useOnWindow, useVisibleTask$, Signal, QRL } from '@builder.io/qwik';
+import { component$, useSignal, $, useOnWindow, Signal, QRL } from '@builder.io/qwik';
 import "../global.css";
 import { Button } from './ui/Button';
-import { LuMenu, LuMoon, LuSunMoon } from '@qwikest/icons/lucide';
+import { LuMoon, LuSunMoon } from '@qwikest/icons/lucide';
 import { QAppBar } from '../integrations/react/AppBar';
 
 // const drawerWidth = 240;
@@ -19,13 +19,13 @@ interface NavigationProps {
 // : React.FC<NavigationProps> = ({ mode, onModeChange }) => {
 export default component$<NavigationProps>(({ mode, onModeChange$ }) => {
 
-  const mobileOpen = useSignal<boolean>(false);
+  // const mobileOpen = useSignal<boolean>(false);
   const scrolled: Signal<boolean> = useSignal<boolean>(false);
 
 
-  const handleDrawerToggle = $(() => {
-    mobileOpen.value = !mobileOpen.value;
-  });
+  // const handleDrawerToggle = $(() => {
+  //   mobileOpen.value = !mobileOpen.value;
+  // });
 
 
     // useOnDocument(
@@ -39,7 +39,7 @@ export default component$<NavigationProps>(({ mode, onModeChange$ }) => {
 
     useOnWindow(
       'scroll',
-      $((event) => {
+      $(() => {
         const navbar = document.getElementById('navigation');
         if (navbar) {
           scrolled.value = scrollY > navbar.clientHeight;

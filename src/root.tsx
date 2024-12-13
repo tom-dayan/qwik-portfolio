@@ -1,7 +1,6 @@
 import { component$, useSignal, $ } from "@builder.io/qwik";
 import {
   QwikCityProvider,
-  RouterOutlet,
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
@@ -14,7 +13,7 @@ import { Footer } from "./components/Footer";
 import { Expertise } from "./components/Expertise";
 import { Timeline } from "./integrations/react/Timeline";
 import { ProjectComponent } from "./components/Project";
-import { LuBriefcase } from '@qwikest/icons/lucide';
+// import { LuBriefcase } from '@qwikest/icons/lucide';
 
 
 export default component$(() => {

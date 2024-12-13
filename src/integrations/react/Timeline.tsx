@@ -1,6 +1,5 @@
 /** @jsxImportSource react */
 import { qwikify$ } from '@builder.io/qwik-react';
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import pkg from 'react-vertical-timeline-component';
