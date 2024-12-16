@@ -1,1 +1,0 @@
-import{_ as o}from"./q-CL022aCJ.js";import{c as t,q as e}from"./q-2oqoxdQM.js";const a=t(e(()=>o(()=>import("./q-DyJ9Py3o.js"),[]),"s_B0lqk5IDDy4")),n={title:"Tom Dayan - Portfolio",meta:[{name:"description",content:"Qwik site description"}]};export{a as default,n as head};
